@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP2 - Props et state</title>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js" defer></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" defer></script>
+
+    <!-- NE JAMAIS UTILISER CECI EN PRODUCTION. JAMAIS ! -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" defer></script>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function MyPROPS({href, color}) {
+            return <a href={href} style={{ color: color }}>Hello, world!</a>;
+        }
+
+        function MyButton({onClick}) {
+            return <button onClick={onClick}>Cliquez sur ce bouton</button>;
+        }
+
+        function MyState() {
+            const [count, setCount] = React.useState(5);
+            function handleClick() {
+                const nouveauCount = Math.floor(Math.random() * 100) + 1;
+                setCount(nouveauCount);
+            }
+            return (
+                <div>
+                    <p>Valeur actuelle : {count}</p>
+                    <button onClick={handleClick}>Générer un nombre (1-100)</button>
+                </div>
+            );
+        }
+
+        function MyComposent() {
+            const [age, setAge] = React.useState(0);
+            function Counter() {
+                setAge(age + 1);
+            }
+            return <button onClick={Counter}>La personne à {age} ans</button>;
+        }
+
+        function MyApp() {
+            return (
+                <div>
+                    <MyPROPS href={'consignes.html'} color={'green'}/>
+                    <MyButton onClick={() => alert('Vous avez cliqué sur un bouton')}/>
+                    <MyState />
+                    <MyComposent />
+                </div>
+            );
+        }
+
+        const container = document.getElementById('root');
+        const root = ReactDOM.createRoot(container);
+        root.render(<MyApp />);
+    </script>
+</body>
+
+</html>

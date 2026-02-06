@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP1 - Apprentissage React</title>
+    <link rel="stylesheet" href="exo.css"/>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js" defer></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" defer></script>
+
+    <!-- NE JAMAIS UTILISER CECI EN PRODUCTION. JAMAIS ! -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" defer></script>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function MyComponent() {
+            const variableTest = 5;
+            return (
+                <h2 className="titre2">Bonjour tout le monde! Vous avez {variableTest} nouveau(x) message(s)</h2>
+            );
+        }
+
+        function MyApp() {
+            return (
+                <section>
+                    <h1 className="titre1">On affiche trois fois le nouveaux composant dans MyAPP</h1>
+                    <MyComponent />
+                    <MyComponent />
+                    <MyComponent />
+                </section>
+            );
+        }
+
+        const container = document.getElementById('root');
+        const root = ReactDOM.createRoot(container);
+        root.render(<MyApp />); 
+    </script>
+</body>
+
+</html>

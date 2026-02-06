@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP1 - Apprentissage React</title>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js" defer></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" defer></script>
+
+    <!-- NE JAMAIS UTILISER CECI EN PRODUCTION. JAMAIS ! -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" defer></script>
+
+    <style>
+
+        .lineForm
+        {
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+
+    </style>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<section class="consignes-conteneur">
+        <p class="note-information">
+          Pour des raisons techniques, le code javascript est embarqué
+          directement dans le fichier HTML et vous devrez travailler de cette façon. Plus tard, nous verrons comment
+          séparer les deux. 
+		</p>
+		
+		<p>Analysez le code du formulaire ci-dessous et en suite :<p>
+		<ol>
+			<li>Mettez à jour le composant (FormLine) pour qu'il prenne quatre (4) valeurs en entrée: id, name, value et label du champ de texte.</li>
+			<li>Stockez dans des variables (dans le composant FormLine) les valeurs renseignées dans les champs input.</li>
+		</ol>
+     </section> 
+	  
+    <div id="root"></div>
+    <script type="text/babel">
+       const FormLine = ({ id, name, label, value}) => {
+        return <div className="lineForm">
+                    <label for={id}>{label}</label>
+                    <input type="text" id={id} name={name} defaultValue={value}/>
+                </div>;
+        }
+
+        function MyApp()
+        {
+            return <form action ="#">
+                        <FormLine id={'nom'} name={'nom'} label={'nom'} value={'nom'}/>
+                        <FormLine id={'prenom'} name={'prenom'} label={'prenom'} value={'prenom'}/>
+                        <FormLine id={'mail'} name={'mail'} label={'mail'} value={'mail'}/>
+                   </form> ;
+        }
+
+        const container = document.getElementById('root');
+        const root = ReactDOM.createRoot(container);
+        root.render(<MyApp />); 
+    </script>
+</body>
+</html>
